@@ -35,7 +35,7 @@ GITLAB_TOKEN = os.getenv("GITLAB_TOKEN") or ""
 SCANNER_TIMEOUT = int(os.getenv("VAPT_SCANNER_TIMEOUT", "900"))
 MAX_CONCURRENT_SCANS = int(os.getenv("VAPT_MAX_CONCURRENT_SCANS", "2"))
 
-# Findings sent to Claude in a single request. Larger batches cost less per
+# Findings sent to the triage engine in one request. Larger batches cost less per
 # finding but risk a truncated response; 12 keeps each request comfortably
 # inside max_tokens even when every finding carries a code snippet.
 TRIAGE_BATCH_SIZE = int(os.getenv("VAPT_TRIAGE_BATCH_SIZE", "12"))

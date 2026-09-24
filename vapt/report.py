@@ -50,7 +50,7 @@ def write_all(scan: Scan) -> dict[str, Path]:
 
 
 def _visible(data: dict) -> list[dict]:
-    """Findings worth printing: everything Claude did not dismiss."""
+    """Findings worth printing: everything triage did not dismiss."""
     out = [f for f in data.get("findings", []) if f.get("verdict") != "false_positive"]
     out.sort(
         key=lambda f: (
@@ -359,7 +359,7 @@ def _grade_color(grade: str) -> str:
 
 
 def _markdown_to_html(text: str) -> str:
-    """Just enough Markdown for the narrative Claude returns: headings, lists,
+    """Just enough Markdown for the narrative the engine returns: headings, lists,
     bold and paragraphs. Everything is escaped first."""
     if not text:
         return ""

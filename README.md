@@ -237,7 +237,7 @@ footer.
 | `VAPT_DATA_DIR` | `./data` | Clones, database and reports |
 | `VAPT_SCANNER_TIMEOUT` | `900` | Per-scanner wall-clock limit (seconds) |
 | `VAPT_MAX_CONCURRENT_SCANS` | `2` | Scans running at once |
-| `VAPT_TRIAGE_BATCH_SIZE` | `12` | Findings per Claude request |
+| `VAPT_TRIAGE_BATCH_SIZE` | `12` | Findings per triage request |
 | `VAPT_TRIAGE_MAX_FINDINGS` | `400` | Triage budget cap per scan |
 | `VAPT_SEMGREP_CONFIG` | `p/security-audit,p/owasp-top-ten,p/secrets` | Semgrep rulesets |
 
