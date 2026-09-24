@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+data/
+.venv/
+venv/
+tools/
+node_modules/
+frontend/node_modules/
+vapt/web/dist/

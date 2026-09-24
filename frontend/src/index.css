@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ theme */
+
+@theme {
+  --color-ink: #e9e9ec;
+  --color-dim: #9096a3;
+  --color-faint: #636a78;
+
+  --color-base: #08090c;
+  --color-panel: #0e1015;
+  --color-raised: #14171e;
+  --color-edge: #20242e;
+  --color-edge-hot: #2e3442;
+
+  --color-brand: #ff2e63;
+  --color-brand-soft: #ff6b8f;
+
+  --color-crit: #ff2e63;
+  --color-high: #ff7a45;
+  --color-med: #f5c145;
+  --color-low: #4d9fff;
+  --color-info: #8b93a3;
+  --color-good: #2ee6a8;
+
+  --font-sans: 'Inter var', ui-sans-serif, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+}
+
+/* ------------------------------------------------------------------- base */
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-brand) 35%, transparent);
+}
+
+/* Scrollbars, so the dark panels don't get a bright native bar. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-edge);
+  border-radius: 99px;
+  border: 2px solid var(--color-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-edge-hot);
+}
+
+/* --------------------------------------------------------------- utilities */
+
+@utility panel {
+  background: color-mix(in oklab, var(--color-panel) 88%, transparent);
+  border: 1px solid var(--color-edge);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+@utility hairline {
+  border-bottom: 1px solid var(--color-edge);
+}
+
+/* Small caps label used for every section heading. */
+@utility eyebrow {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+/* ------------------------------------------------------------- animations */
+
+@keyframes vapt-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes vapt-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(400%); }
+}
+
+@keyframes vapt-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-dot {
+  animation: vapt-pulse 1.8s ease-in-out infinite;
+}
+
+/* The moving highlight on an in-progress scan's bar. */
+.animate-sweep::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  width: 25%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, white 55%, transparent),
+    transparent
+  );
+  animation: vapt-sweep 1.4s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: vapt-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Markdown rendered from the model's narrative. */
+.prose-report h2,
+.prose-report h3,
+.prose-report h4 {
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 1.4em 0 0.5em;
+}
+.prose-report p {
+  margin: 0.7em 0;
+  color: var(--color-dim);
+  line-height: 1.65;
+}
+.prose-report ul,
+.prose-report ol {
+  margin: 0.7em 0;
+  padding-left: 1.35em;
+  color: var(--color-dim);
+}
+.prose-report li {
+  margin: 0.35em 0;
+  line-height: 1.6;
+}
+.prose-report ol {
+  list-style: decimal;
+}
+.prose-report ul {
+  list-style: disc;
+}
+.prose-report strong {
+  color: var(--color-ink);
+  font-weight: 620;
+}
+.prose-report code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-raised);
+  border: 1px solid var(--color-edge);
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+  color: var(--color-brand-soft);
+}

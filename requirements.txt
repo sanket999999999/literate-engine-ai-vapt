@@ -1,0 +1,24 @@
+# --- web layer ---
+fastapi>=0.115
+uvicorn[standard]>=0.34
+pydantic>=2.9
+
+# --- persistence ---
+SQLAlchemy>=2.0.36
+
+# --- AI triage providers ---
+# Claude is the default; the others are optional - a provider whose SDK is not
+# installed simply shows as unavailable in the UI instead of breaking startup.
+anthropic>=0.42
+openai>=1.60
+google-genai>=1.0
+# Ollama needs no SDK - it is reached over plain HTTP.
+
+# --- scanners installable from PyPI ---
+# (gitleaks, trivy and osv-scanner are fetched by scripts/install_tools.py)
+semgrep>=1.140
+checkov>=3.2
+bandit>=1.8
+
+# --- misc ---
+python-dotenv>=1.0
